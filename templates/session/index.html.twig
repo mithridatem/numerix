@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} session {% endblock %}
+
+{% block body %}
+<div>
+    <h1 class="titre">Liste des sessions : </h1>
+        {% for one in all %}
+            <h2 class="name">{{one.id | upper}}</h2>
+            <h3 class="name">{{one.nameSession | upper}}</h3>
+            <h3 class="info">{{one.imgSession}}</h3>
+            <h3 class="info">{{one.idTypeSession.nameTypeSession}}</h3>
+            <h3 class="info">{{one.idFormer.nameFormer}}</h3>
+            <h3>Skills : </h3>
+            {% for skill in all[0].skills %} 
+                <h4>-{{ skill.id}} : {{ skill.nameSkill}} {{ skill.descShortSkill}}</h4>
+            {% endfor %}
+        {% endfor %}
+</div>
+{% endblock %}
