@@ -1,6 +1,8 @@
+/*-- Web --*/
 body{
     background-color: rgb(34, 34, 34);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
 }
 h1{
     color: whitesmoke;
@@ -30,14 +32,33 @@ input{
     border-radius: 4px;
 }
 button{
+    margin-top: 5%;
+    margin-left: 78%;
     font-size: 1rem;
     width: fit-content;
     border-radius: 4px;
-    background-color: white;
+    background-color: rgb(161, 160, 160);
     color: black;
     cursor: pointer;
     font-style: bold;
 }
-
+/*-- Mobile --*/
+@media (max-width: 640px) {
+    button{
+        font-size: 2rem;
+        margin-left: 54%;
+    }
+    label{
+       font-size: 2rem;
+       margin-top: 2%;
+       margin-bottom: 2%;
+    }
+    h1{
+        font-size: 2rem;
+    }
+    input{
+        height: 2.3rem;
+    }
+}
 
 
