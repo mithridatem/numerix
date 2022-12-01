@@ -18,7 +18,7 @@ class RequestTypeController extends AbstractController
     public function index(RequestTypeRepository $rcRepository,
     NormalizerInterface $normalizer): Response 
     {
-        return $this->json($rcRepository->findAll(),200, [], ['groups'=>'show_type']);
+        return $this->json($rcRepository->findAll(),200, [], ['groups'=>'request']);
     }
     //méthode formulaire de contact
     #[Route('/request/type/contact', name: 'app_request_type_contact', methods:'POST')]
@@ -42,5 +42,5 @@ class RequestTypeController extends AbstractController
             $em->flush();
             //dump and die de $cat
             dd($type);
-    } 
+    }
 }
