@@ -53,7 +53,31 @@ class SessionRepository extends ServiceEntityRepository
             ->getResult()
        ;
     }
+    /**
+    * @return Session[] Returns an array of Session objects
+    */
+    public function findFirst(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+       ;
+    }
 
+    /**
+    * @return Session[] Returns an array of Session objects
+    */
+    public function findLast(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+       ;
+    }
 //    public function findOneBySomeField($value): ?Session
 //    {
 //        return $this->createQueryBuilder('s')
