@@ -47,4 +47,40 @@ class FormerController extends AbstractController
             ['Content-Type'=>'application/json','Access-Control-Allow-Origin'=> '*'], ['groups' => 'tt']);
         }
     }
+    //retourne le formateur par son prénom -> json formateur (erreur ok)
+    #[Route('/former/firstName/{value}', name: 'app_former_first_name', methods: 'GET')]
+    public function getFormerByFirstName(
+        FormerRepository $formerRepository,
+        $value
+        ): Response{
+        $data = $formerRepository->findByFirstName($value);
+        //test si le formateur n'existe pas -> json erreur
+        if(empty($data)){
+            return $this->json(["error"=>"$value n'est pas formateur"],200, 
+            ['Content-Type'=>'application/json','Access-Control-Allow-Origin'=> '*']);
+        }
+        //sinon retourne le formateur -> json formateur
+        else{
+            return $this->json($data,200, 
+            ['Content-Type'=>'application/json','Access-Control-Allow-Origin'=> '*'], ['groups' => 'tt']);
+        }
+    }
+    //retourne le formateur par son nom -> json formateur (erreur ok)
+    #[Route('/former/name/{value}', name: 'app_former_name', methods: 'GET')]
+    public function getFormerByName(
+        FormerRepository $formerRepository,
+        $value
+        ): Response{
+        $data = $formerRepository->findByName($value);
+        //test si le formateur n'existe pas -> json erreur
+        if(empty($data)){
+            return $this->json(["error"=>"$value n'est pas formateur"],200, 
+            ['Content-Type'=>'application/json','Access-Control-Allow-Origin'=> '*']);
+        }
+        //sinon retourne le formateur -> json formateur
+        else{
+            return $this->json($data,200, 
+            ['Content-Type'=>'application/json','Access-Control-Allow-Origin'=> '*'], ['groups' => 'tt']);
+        }
+    }
 }

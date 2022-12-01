@@ -38,7 +38,35 @@ class FormerRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    /**
+    * @return Former[] Returns an array of Former objects
+    */
+    public function findByFirstName($value): array
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.first_name_former = :val')
+            ->setParameter('val', $value)
+            ->orderBy('f.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
+    /**
+    * @return Former[] Returns an array of Former objects
+    */
+    public function findByName($value): array
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.name_former = :val')
+            ->setParameter('val', $value)
+            ->orderBy('f.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 //    /**
 //     * @return Former[] Returns an array of Former objects
 //     */
